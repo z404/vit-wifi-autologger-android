@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="1" android:layout_width="-1" android:layout_height="-1">
+	<TextView android:textSize="16sp" android:textStyle="0x1" android:textColor="000" android:gravity="0x11" android:id="false" android:padding="8dp" android:layout_width="-1" android:layout_height="-2" android:text="VIT WiFi Autologger " />
+	<LinearLayout android:orientation="0" android:id="false" android:padding="8dp" android:layout_width="-1" android:layout_height="-2">
+		<TextView android:textSize="12sp" android:textStyle="0x1" android:textColor="000" android:id="false" android:padding="8dp" android:layout_width="120dp" android:layout_height="-2" android:text="Username:" />
+		<EditText android:textSize="12sp" android:textColor="000" android:textColorHint="607d8b" android:id="false" android:padding="8dp" android:layout_width="-2" android:layout_height="-2" android:hint="20XXX0000" />
+	</LinearLayout>
+	<LinearLayout android:orientation="0" android:id="false" android:padding="8dp" android:layout_width="-1" android:layout_height="-2">
+		<TextView android:textSize="12sp" android:textStyle="0x1" android:textColor="000" android:id="false" android:padding="8dp" android:layout_width="120dp" android:layout_height="-2" android:text="Password:" />
+		<EditText android:textSize="12sp" android:textColor="000" android:textColorHint="607d8b" android:id="false" android:padding="8dp" android:layout_width="-2" android:layout_height="-2" android:hint="ABCDEF" />
+	</LinearLayout>
+	<Button android:textSize="12sp" android:textColor="000" android:gravity="0x11" android:id="false" android:padding="8dp" android:layout_width="-1" android:layout_height="-2" android:text="Login!" />
+</LinearLayout>
