@@ -47,6 +47,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.vitwifi.login.R;
 import com.vitwifi.login.SketchwareUtil;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -91,10 +94,39 @@ public class MainActivity
             public void onClick(View view) {
                 MainActivity.access$1(MainActivity.this, MainActivity.this.textview1.getText().toString());
                 MainActivity.access$3(MainActivity.this, MainActivity.this.textview2.getText().toString());
-                SketchwareUtil.showMessage(MainActivity.this.getApplicationContext(), "checklogin");
+                URL url = new URL(
+                        "http://phc.prontonetworks.com/cgi-bin/authlogin?URI=http://connect.rom.miui.com/generate_204");
+                HttpURLConnection http = (HttpURLConnection) url.openConnection();
+                http.setRequestMethod("POST");
+                http.setDoOutput(true);
+                http.setRequestProperty("Accept",
+                        "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+                http.setRequestProperty("Accept-Language", "en-US,en;q=0.9");
+                http.setRequestProperty("Cache-Control", "max-age=0");
+                http.setRequestProperty("Connection", "keep-alive");
+                http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                http.setRequestProperty("DNT", "1");
+                http.setRequestProperty("Origin", "http://phc.prontonetworks.com");
+                http.setRequestProperty("Referer",
+                        "http://phc.prontonetworks.com/cgi-bin/authlogin?URI=http://connectivitycheck.gstatic.com/generate_204");
+                http.setRequestProperty("Upgrade-Insecure-Requests", "1");
+                http.setRequestProperty("User-Agent",
+                        "Mozilla/5.0 (Linux; Android 11; MT2111) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36");
+
+                String data = "userId=" + MainActivity.this.username + "&password=" + MainActivity.this.password
+                        + "&serviceName=ProntoAuthentication&Submit22=Login";
+
+                // byte[] out = data.getBytes(StandardCharsets.UTF_8);
+
+                // OutputStream stream = http.getOutputStream();
+                // stream.write(out);
+                SketchwareUtil.showMessage(MainActivity.this.getApplicationContext(),
+                        http.getResponseCode() + " " + http.getResponseMessage());
+                http.disconnect();
+
                 if (1 == 2) {
-                    savepass.edit().putString("username", username).commit();
-                    savepass.edit().putString("password", password).commit();
+                    // savepass.edit().putString("username", username).commit();
+                    // savepass.edit().putString("password", password).commit();
                     SketchwareUtil.showMessage(MainActivity.this.getApplicationContext(),
                             "Login Complete! Close the app and use wifi as usual.");
                 } else {
